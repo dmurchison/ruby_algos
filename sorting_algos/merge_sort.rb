@@ -1,5 +1,6 @@
 
 # -- Merge Sort --
+
 def merge_sort(array)
   return array if array.length <= 1
 
@@ -7,11 +8,13 @@ def merge_sort(array)
   left = array.take(mid)
   right = array.drop(mid)
   left_sorted, right_sorted = merge_sort(left), merge_sort(right)
-  merge(left_sorted, right_sorted)
+
+  return merge(left_sorted, right_sorted)
 end
 
 def merge(left, right)
   merged = []
+
   until left.empty? || right.empty?
     if left.first < right.first
       merged.push(left.shift)
@@ -19,7 +22,9 @@ def merge(left, right)
       merged.push(right.shift)
     end
   end
-  merged + left + right
+
+  return merged + left + right
 end
 
-p merge_sort([5,3,2,5,7,4,2,1,4,2])
+p merge_sort([5,3,2,5,7,4,2,1,4,2]) # => [1, 2, 2, 2, 3, 4, 4, 5, 5, 7]
+
